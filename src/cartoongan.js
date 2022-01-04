@@ -35,17 +35,18 @@ export default class CartoonGAN {
         generatedImgTensor = tf.clipByValue(generatedImgTensor, 0, 1);
         console.log(generatedImgTensor)
         // renderResult(generatedImgTensor);
-        let canvas = document.getElementById('canvas')
-        tf.browser.toPixels(generatedImgTensor, canvas)
-        let image = canvas.toDataURL("image/jpeg", 1.0);
-        console.log(image)
-        inputImgTensor.dispose();
-    
-        const totalTime = performance.now() - startTime;
-        console.log(`Transformation done in ${Math.floor(totalTime)}ms`);
-        console.log("after predicting: ", tf.memory())
-
-        return image
+        let canvas = document.createElement('canvas')
+        const render = tf.browser.toPixels(generatedImgTensor, canvas)
+        return render.then(res=>{
+            let image = canvas.toDataURL("image/jpeg", 1.0);
+            console.log(image)
+            inputImgTensor.dispose();
+        
+            const totalTime = performance.now() - startTime;
+            console.log(`Transformation done in ${Math.floor(totalTime)}ms`);
+            console.log("after predicting: ", tf.memory())
+            return image
+        })
     }
 }
 
