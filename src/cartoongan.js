@@ -7,8 +7,9 @@ export default class CartoonGAN {
     }
 
     async setModel(){   
-        console.log(MyModel)
-        const MODEL_URL = 'https://raw.githubusercontent.com/leemengtaiwan/tfjs-models/master/cartoongan/tfjs_json_models/shinkai/model.json';
+        // console.log(MyModel)
+        const MODEL_URL = 'https://cdn.jsdelivr.net/gh/SP12893678/cartoon-gan-demo@master/src/assets/model/model.json'
+        // const MODEL_URL = 'https://raw.githubusercontent.com/leemengtaiwan/tfjs-models/master/cartoongan/tfjs_json_models/shinkai/model.json';
         let generator = await tf.loadGraphModel(MODEL_URL);
         console.log('generator loaded.');
         console.log('warm up generator');
