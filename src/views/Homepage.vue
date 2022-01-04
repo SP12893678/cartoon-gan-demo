@@ -58,18 +58,18 @@
       <div class="mx-4 mt-4 mb-2 flex-1 w-full overflow-x-hidden">
         <div class="flex h-full gap-4">
           <div class="px-4 py-4 flex-1 border-2 border-gray-400 border-dashed rounded-2xl flex flex-wrap gap-3 justify-around items-center">
-            <div style="flex:0 1 500px; height:100%;">
+            <div style="flex:0 1 300px; height:100%;">
               <h6 class="mb-4 text-xs text-gray-400 font-semibold tracking-widest uppercase">
                     - Real Image
               </h6>
               <img class="rounded-xl object-cover max-h-[90%]" :src="selected.default" alt="" srcset="">
             </div>
-            <div style="flex:0 1 500px; height:100%;">
+            <div style="flex:0 1 300px; height:100%;">
               <h6 class="mb-4 text-xs text-gray-400 font-semibold tracking-widest uppercase">
                     - Cartoonizing Image
               </h6>
               <div class=" rounded-2xl flex justify-center items-center">
-                <img v-if="!selected.cartoon" class="rounded-xl grayscale object-cover max-w-[400px] max-h-[90%]" src="../assets/images/comic-book.png" alt="" srcset="">
+                <img v-if="!selected.cartoon" class="rounded-xl grayscale object-cover max-w-[300px] max-h-[70%]" src="../assets/images/comic-book.png" alt="" srcset="">
                 <img v-else class="rounded-xl object-cover max-h-full" :src="selected.cartoon" alt="" srcset="">
               </div>
             </div>

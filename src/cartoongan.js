@@ -1,13 +1,13 @@
 import * as tf from '@tensorflow/tfjs';
-import shinkaiModel from '../src/assets/model/shinkai-open-source.json'
+// import MyModel from '../src/assets/model/model.json'
 
 export default class CartoonGAN {
     constructor(){
         this.setModel()
     }
 
-    async setModel(){
-        console.log(shinkaiModel)
+    async setModel(){   
+        console.log(MyModel)
         const MODEL_URL = 'https://raw.githubusercontent.com/leemengtaiwan/tfjs-models/master/cartoongan/tfjs_json_models/shinkai/model.json';
         let generator = await tf.loadGraphModel(MODEL_URL);
         console.log('generator loaded.');
