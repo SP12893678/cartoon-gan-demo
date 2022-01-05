@@ -1,12 +1,17 @@
 <template>
   <div>
+      <snackBar />
       <router-view />
   </div>
 </template>
 
 <script>
-export default {
+import snackBar from './components/SnackBar.vue'
 
+export default {
+  components:{
+    snackBar
+  }
 }
 </script>
 
