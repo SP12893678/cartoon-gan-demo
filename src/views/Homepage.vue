@@ -103,6 +103,14 @@
                 </h6>
                 <vue-slider v-model="selected.height" :min="Number(100)" :max="Number(1920)" />
               </div>
+
+              <div class="mx-4 my-6">
+                <select v-model="model">
+                  <option selected>20210103</option>
+                  <option>20210106</option>
+                  <option>20210107</option>
+                </select>
+              </div>
             </div>
 
             <div class="w-full">
@@ -168,7 +176,8 @@ export default {
             },
             outputImg:[
 
-            ]
+            ],
+            model: '20210107'
         }
     },
     mounted(){
@@ -185,6 +194,8 @@ export default {
           InputImgElemnt.width = selected.width
           InputImgElemnt.height = selected.height
 
+          const model_url = `https://cdn.jsdelivr.net/gh/SP12893678/cartoon-gan-demo@master/src/assets/model/${this.model}/model.json`
+          this.cartoonGAN.setModel(model_url)
           this.cartoonGAN.predict(InputImgElemnt).then(res=>{
             // this.selected.cartoon = res
             this.running = false

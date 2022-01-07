@@ -2,14 +2,14 @@ import * as tf from '@tensorflow/tfjs';
 
 export default class CartoonGAN {
     constructor(){
-        this.setModel()
+        // this.setModel()
     }
 
-    async setModel(){   
+    async setModel(MODEL_URL){   
         // console.log(MyModel)
         // const MODEL_URL = 'https://cdn.jsdelivr.net/gh/SP12893678/cartoon-gan-demo@master/src/assets/model/model.json'
         // const MODEL_URL = 'https://cdn.jsdelivr.net/gh/SP12893678/cartoon-gan-demo@master/src/assets/model/20210106/model.json'
-        const MODEL_URL = 'https://cdn.jsdelivr.net/gh/SP12893678/cartoon-gan-demo@master/src/assets/model/20210107/model.json'
+        // const MODEL_URL = 'https://cdn.jsdelivr.net/gh/SP12893678/cartoon-gan-demo@master/src/assets/model/20210107/model.json'
         // const MODEL_URL = 'https://raw.githubusercontent.com/leemengtaiwan/tfjs-models/master/cartoongan/tfjs_json_models/shinkai/model.json';
         // const MODEL_URL = 'https://raw.githubusercontent.com/leemengtaiwan/tfjs-models/master/cartoongan/tfjs_json_models/hayao/model.json';
         let generator = await tf.loadGraphModel(MODEL_URL);
