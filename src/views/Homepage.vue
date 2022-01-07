@@ -105,7 +105,10 @@
               </div>
 
               <div class="mx-4 my-6">
-                <select v-model="model">
+                <h6 class="mb-3 text-xs text-gray-500 font-semibold tracking-widest uppercase">
+                  Select Model
+                </h6>
+                <select class="w-full py-2 rounded-md" v-model="model">
                   <option selected>20210103</option>
                   <option>20210106</option>
                   <option>20210107</option>
@@ -195,20 +198,22 @@ export default {
           InputImgElemnt.height = selected.height
 
           const model_url = `https://cdn.jsdelivr.net/gh/SP12893678/cartoon-gan-demo@master/src/assets/model/${this.model}/model.json`
-          this.cartoonGAN.setModel(model_url)
-          this.cartoonGAN.predict(InputImgElemnt).then(res=>{
-            // this.selected.cartoon = res
-            this.running = false
+          this.cartoonGAN.setModel(model_url).then(res=>{
+            return this.cartoonGAN.predict(InputImgElemnt).then(res=>{
+                    // this.selected.cartoon = res
+                    this.running = false
 
-            selected.cartoon = res
-            console.log(selected)
-            this.outputImg.push(selected)
+                    selected.cartoon = res
+                    console.log(selected)
+                    this.outputImg.push(selected)
 
+                  })
+                  .catch(res=>{
+                    this.running = false
+                    this.$store.commit('snackBar', { show: true, message: res }, { root: true })
+                  })
           })
-          .catch(res=>{
-            this.running = false
-            this.$store.commit('snackBar', { show: true, message: res }, { root: true })
-          })
+          
         },
         selectImage(type,item){
           if(type=='output') {
